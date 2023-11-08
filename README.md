@@ -45,6 +45,10 @@ Este repositório contém uma aplicação para realizar operações CRUD (Create
 
 1. Navegue até a pasta `Tamplates` e abra o arquivo `index.html` em seu navegador.
 
+# Testes 
+
+1. para executar os testes de API, no prompt de comando, e execute o comando pytest testes.py 
+
 ## Funcionalidades da Aplicação
 
 ### 1. Tela "Índice"
