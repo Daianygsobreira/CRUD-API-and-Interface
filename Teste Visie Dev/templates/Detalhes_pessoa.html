@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalhes da Pessoa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Detalhes da Pessoa</h1>
+        <table class="table is-bordered is-striped is-narrow is-hoverable">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Data de Admissão</th>
+                    <th>Data de Nascimento</th>
+                    <th>RG</th>
+                    <th>CPF</th>
+                    <th>Função</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ pessoa.nome }}</td>
+                    <td>{{ pessoa.data_admissao }}</td>
+                    <td>{{ pessoa.data_nascimento }}</td>
+                    <td>{{ pessoa.rg }}</td>
+                    <td>{{ pessoa.cpf }}</td>
+                    <td>{{ pessoa.funcao }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a class="button is-primary" href="/atualizar_pessoa/{{ pessoa.id_pessoa }}">Editar</a>
+            <a class="button is-danger" href="javascript:void(0);" onclick="excluirPessoa({{ pessoa.id_pessoa }})">Excluir</a>
+        </div>
+        <a class="button is-primary" href="/">Voltar para a lista de pessoas</a>
+    </div>
+
+    <script>
+        
+        function excluirPessoa(id) {
+            if (confirm("Tem certeza de que deseja excluir esta pessoa?")) {
+                fetch(`http://127.0.0.1:5001/Api/delete_pessoas/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    window.location.href = '/'; 
+                })
+                .catch(error => console.error('Erro ao excluir pessoa:', error));
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

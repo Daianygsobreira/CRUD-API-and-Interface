@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inclusão de Pessoa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Inclusão de Pessoa</h1>
+        <form id="userForm" action="http://127.0.0.1:5001/Api/add_pessoas/" method="POST">
+            <div class="field">
+                <label class="label">Nome:</label>
+                <div class="control">
+                    <input class="input" type="text" name="nome">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">RG:</label>
+                <div class="control">
+                    <input class="input" type="text" name="rg">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">CPF:</label>
+                <div class="control">
+                    <input class="input" type="text" name="cpf">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Data de Nascimento:</label>
+                <div class="control">
+                    <input class="input" type="text" name="data_nascimento">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Data de Admissão:</label>
+                <div class="control">
+                    <input class="input" type="text" name="data_admissao">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Função:</label>
+                <div class="control">
+                    <input class="input" type="text" name="funcao">
+                </div>
+            </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-primary" type="submit">Salvar</button>
+                </div>
+                <div class="control">
+                    <a class="button is-danger" href="/">Cancelar</a>
+                </div>
+            </div>
+        </form>
+        </div>
+    <script>
+        document.getElementById("userForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                method: this.method,
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "/"; 
+                } else {
+                    console.error("Error update user");
+                }
+            })
+            .catch(error => {
+                console.error("Network error:", error);
+            });
+        });
+    </script>
+</body>
+</html>

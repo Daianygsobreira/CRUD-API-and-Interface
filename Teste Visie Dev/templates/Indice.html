@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Pessoas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Lista de Pessoas</h1>
+        <table class="table is-bordered is-striped is-narrow is-hoverable">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Data de Admissão</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                </table>
+                <a class="button is-primary" href="/inclusao_pessoa/">Adicionar Registro</a>
+                </div>
+
+                <script>
+                    // Função para buscar dados da API e preencher a tabela
+                    function carregarPessoas() {
+                        fetch('http://127.0.0.1:5001/Api/pessoas', { method: 'GET' })
+                            .then(response => response.json())
+                            .then(data => {
+                                const tabela = document.querySelector('tbody');
+                                tabela.innerHTML = '';
+
+                                data.forEach(pessoa => {
+                                    const row = tabela.insertRow();
+                                    const nome = row.insertCell(0);
+                                    const dataAdmissao = row.insertCell(1);
+                                    const acoes = row.insertCell(2);
+
+                                    nome.innerText = pessoa.nome.split(' ')[0]; 
+                                    dataAdmissao.innerText = pessoa.data_admissao;
+                                    
+                                    
+                                    acoes.innerHTML = `
+                                        <a class="button is-info" href="/detalhes/${pessoa.id_pessoa}">Ver mais</a>
+                                        <a class="button is-primary" href="atualizar_pessoa/${pessoa.id_pessoa}">Editar</a>
+                                        <a class="button is-danger" href="javascript:void(0);" onclick="excluirPessoa(${pessoa.id_pessoa})">Excluir</a>
+                                    `;
+                                });
+                            })
+                            .catch(error => console.error('Erro ao carregar pessoas:', error));
+                    }
+
+                    // Chamar a função para carregar pessoas ao carregar a página
+                    carregarPessoas();
+                </script>
+                <script>
+                    function excluirPessoa(id) {
+                        if (confirm("Tem certeza de que deseja excluir esta pessoa?")) {
+                            fetch(`http://127.0.0.1:5001/Api/delete_pessoas/${id}`, {
+                                method: 'DELETE'
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                alert(data.message);
+                                
+                                carregarPessoas();
+                            })
+                            .catch(error => console.error('Erro ao excluir pessoa:', error));
+                        }
+                    }
+                </script>
+                
+        </tbody>    
+</body>
+</html>
