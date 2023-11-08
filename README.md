@@ -9,14 +9,7 @@ Este repositório contém uma aplicação para realizar operações CRUD (Create
 - Framework: Flask (micro framework)
 - Banco de Dados: MySQL
 - Arquivos Python -
-    Api.py - Api, com as rotas CRUD.
-      framerworks - flask, request,jsonify, mysqlconnector, flask_cors e datetime.
-    Client.py - Cliente de Rotas http para as paginas.
-      frameworks - flask, render_template e requests.
-    Import_MySql.py - aplicação de ingestao dos dados.
-      frameworks - Mysqlconnector.
-    testes.py - aplicação para testar a API.
-      frameworks pytest, json.
+      Frameworks - flask, request,jsonify, mysqlconnector, flask_cors, datetime, render_template, requests, Mysqlconnector, pytest, json.
 
 ### Frontend
 - HTML5
