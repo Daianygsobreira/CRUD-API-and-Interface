@@ -20,9 +20,7 @@ Este repositório contém uma aplicação para realizar operações CRUD (Create
 ### Configuração do Ambiente
 
 1. Certifique-se de ter o Python 3 instalado em seu sistema.
-2. Instale as dependências do backend usando o seguinte comando:
-   pip install -r requirements.txt
-3. Execute o script Iport_MySql.py fornecido para criar a tabela e popular dados iniciais.
+2. Execute o script Iport_MySql.py fornecido para criar a tabela e popular dados iniciais.
 
 ### Iniciando o Backend
 
@@ -30,6 +28,7 @@ Este repositório contém uma aplicação para realizar operações CRUD (Create
    ```
    python Api.py
    ```
+   ````
    python Client.py
    ```
    Isso iniciará o servidor Flask.
