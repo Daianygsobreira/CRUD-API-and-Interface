@@ -31,7 +31,7 @@ Este repositório contém uma aplicação para realizar operações CRUD (Create
    ````
    python Client.py
    ```
-   Isso iniciará o servidor Flask.
+   \\Isso iniciará o servidor Flask.
 
 ### Iniciando o Frontend
 
